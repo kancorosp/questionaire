@@ -1,0 +1,99 @@
+// Place all the styles related to the questionaries controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	color: gray;
+	font-size: 14pt;
+	margin: 10px 20px;
+}
+
+h1 {
+	color: darkgray;
+	font-size: 18pt;
+	margin: 30px 0px 70px 0px;
+	text-align: center;
+}
+
+.questionary {
+	border: 1px solid darkgray;
+	margin: 20px 20px 50px 20px;
+	padding: 20px;
+}
+.description {
+}
+.deadline {
+	font-size: 10pt;
+}
+.items {
+	margin: 20px;
+}
+.q {
+	margin:10px 0px 25px 0px;
+	font-weight: bold;
+}
+.choice {
+	margin:10px 0px 10px 50px;
+}
+.field {
+	margin:10px;
+}
+.field label {
+	display: block;
+	width:100px;
+}
+a {
+	color: darkgray;
+	text-decoration: none;
+}
+a:hover {
+	color: darkgray;
+	text-decoration: underline;
+}
+hr {
+	display: block;
+	height: 2px;
+	background-color: #eee;
+	border: 0;
+	margin: 25px 0px 25px 0px;
+}
+table.qlist {
+	width:90%;
+}
+
+table tr th {
+	background: #909090;
+	color: #f6f6f6;
+	padding: 10px;
+	font-size: 12pt;
+	font-weight:bold;
+}
+
+.new_questionary{
+	font-size: 12pt;
+}
+
+table tr td {
+	background: #f6f6f6;
+	color: #909090;
+	padding: 5px 10px;
+	font-size: 12pt;
+}
+
+.finished {
+	padding:2px 3px;
+	margin: 0px 0px 0px 5px;
+	font-size: 9pt;
+	color: white;
+	background: lightgray;
+	font-weight: bold;
+}
+
+.not_finished {
+	padding:2px 3px;
+	margin: 0px 0px 0px 5px;
+	font-size: 9pt;
+	color: white;
+	background: red;
+	font-weight: bold;
+}

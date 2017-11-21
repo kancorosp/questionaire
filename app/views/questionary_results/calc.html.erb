@@ -1,0 +1,22 @@
+<h1><%=@questionary.title %>の集計</h1>
+
+<p>回答の一番最初のものは無選択。以後、１つ目の選択肢を選んだ数、２つ目の、、と続きます</p>
+
+<%= link_to "他のアンケート結果もみる" , questionary_results_path %>
+
+<table>
+<tr><th>質問</th><th>集計</th></tr>
+<% @calc.each do |ky, vl| %>
+<tr><td><%= ky %></td><td>
+<table><tr>
+<% for v in vl %>
+<td><%= v.to_i %></td>
+<% end %>
+</tr>
+</table>
+</td></tr>
+<% end %>
+</table>
+
+
+

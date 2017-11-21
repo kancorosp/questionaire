@@ -1,0 +1,33 @@
+<%= form_with(model: questionary, local: true) do |form| %>
+  <% if questionary.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(questionary.errors.count, "error") %> prohibited this questionary from being saved:</h2>
+
+      <ul>
+      <% questionary.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :聞きたい事 %>
+    <%= form.text_area :title, id: :questionary_title %>
+  </div>
+
+  <div class="field">
+    <%= form.label :アンケート詳細 %>
+    <%= form.text_area :description, id: :questionary_description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :締め切り %>
+    <%= form.date_select :deadline,:use_month_numbers => true, :default=> Time.now + 1.day,id: :questionary_deadline %>
+  </div>
+
+  <div class="actions">
+
+    <%= form.submit(["アンケート作成"]) %>
+  </div>
+<% end %>

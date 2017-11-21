@@ -1,0 +1,27 @@
+<%= form_with(model: questionary_result, local: true) do |form| %>
+  <% if questionary_result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(questionary_result.errors.count, "error") %> prohibited this questionary_result from being saved:</h2>
+
+      <ul>
+      <% questionary_result.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :questionary_id %>
+    <%= form.number_field :questionary_id, id: :questionary_result_questionary_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :result %>
+    <%= form.text_area :result, id: :questionary_result_result %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

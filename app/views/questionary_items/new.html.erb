@@ -1,0 +1,46 @@
+<h1>質問の作成</h1>
+<p>「<%= @questionary.title %>」の質問</p>
+
+<%#= render 'form', questionary_item: @questionary_item %>
+
+
+<%= form_for(@questionary_item) do |f| %>
+  <% if @questionary_item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@questionary_item.errors.count, "error") %> prohibited this questionary_item from being saved:</h2>
+
+      <ul>
+      <% @questionary_item.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :質問項目 %>
+    <%= f.text_area :content, {cols:40, rows:5} %>
+  </div>
+
+ <div class="field">
+    
+    <%= f.hidden_field :questionary_id, :value => params[:id] %>
+  </div> 
+
+  <div class="actions">
+    <%= f.submit(["質問項目作成"]) %>
+  </div>
+<% end %>
+
+<hr>
+<p> 「<%= @questionary.title %>」の作成済質問</p>
+<% @questionary.questionary_item.each do |q_item| %>
+
+	<%= q_item.content %>
+
+<% end %>
+
+<p>	　
+
+<hr>
+<%= link_to 'アンケートに戻る', '/questionaries' %>
