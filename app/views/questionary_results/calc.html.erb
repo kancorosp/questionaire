@@ -26,11 +26,10 @@
 <%# helper使う？helperに変数定義？
 User.find_by(email: "mhartl@example.com")%>
 <%#end %>
-<%#animals.each_with_index {|anim, i| puts "#{i+1}. #{anim}" }%>
-<% @questionary.questionary_item.each_with_index(1) |q_item, idx| %>
- <%= r + idx: + q_item.content %>
- <% end %>
-<% end %>
+
+	<% @questionary.questionary_item.each_with_index do |q_item, i| %>
+ 	<%= "r" + i　+ ":" + q_item.content %>
+	<% end %>
 </td>
 
 <td>
