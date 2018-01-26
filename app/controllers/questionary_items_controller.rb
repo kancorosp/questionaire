@@ -43,6 +43,8 @@ end
         format.json { render json: @questionary_item.errors, status: :unprocessable_entity }
       end
     end
+
+    session.delete(:questionary_count)
   end
 
   # PATCH/PUT /questionary_items/1

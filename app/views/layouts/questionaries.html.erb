@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>アンケート</title>
+		<%= csrf_meta_tags %>
+
+		<%= stylesheet_link_tag 'questionaries', media: 'all', 
+			'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'questionaries', 
+			'data-turbolinks-track': 'reload' %>
+	</head>
+
+	<body>
+		<%= yield %>
+	</body>
+</html>

@@ -17,6 +17,7 @@ class QuestionaryChoicesController < ApplicationController
   def new
     @questionary_choice = QuestionaryChoice.new
     @questionary_choice.questionary_item_id = params[:id]
+    
     @questionary_item = QuestionaryItem.find params[:id]
   end
 

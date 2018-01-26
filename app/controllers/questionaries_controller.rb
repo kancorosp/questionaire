@@ -15,6 +15,10 @@ class QuestionariesController < ApplicationController
 
   def sendform
     id = params[:id]
+    #questionary.id
+
+    #@questionary_item.id.countをparamsで渡す？
+    
     result ='question_id:' + id
     for i in 1..100
       str = 'r' + i.to_s
@@ -22,11 +26,18 @@ class QuestionariesController < ApplicationController
         result += ',' + str + ':0'
       else
         result += ',' + str + ':' + params[str]
+        #params[str]=r+count.itemsのvalue
       end
     end
+
+    comment = params[:comment]
+
+
+
     obj = QuestionaryResult.new
     obj.questionary_id = id
     obj.result = result
+    obj.comment = comment
     obj.save!
     redirect_to '/questionary_results/calc/' +@questionary.id.to_s
     

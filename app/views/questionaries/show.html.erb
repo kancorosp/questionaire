@@ -21,6 +21,7 @@
   <p class="q"><%= item.content %></p>
   <% count_items += 1 %>
   <% count_choices = 0 %>
+  
 
   <% item.questionary_choice.each do |choice| %>
     <% count_choices += 1 %>
@@ -31,14 +32,18 @@
     <label for="<%= count_items.to_s + '_' + count_choices.to_s %>">
       <%= choice.content %></label></div>
   <% end %>
+
   <hr>
 <% end %>
-
+ 
+<p>コメント</p>
+<textarea name="comment" cols="50" rows="10"></textarea><br>
 <%=submit_tag '送信' %>
 
 </form>
 
 </div>
 
-<%= link_to '回答結果をみる', questionary_results_path %><br>
+<hr>
+<a href ="/questionary_results/calc/<%=@questionary.id %>">回答結果をみる</a><br>
 <%= link_to 'アンケート一覧に戻る', questionaries_path %>

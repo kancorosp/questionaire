@@ -20,7 +20,14 @@
 
   <div class="field">
     <%= f.label :選択肢の番号  %>
-    <%= f.number_field :value ,min:1 %>
+
+    <%
+session[:questionary_count] ||= 0
+session[:questionary_count] += 1
+%>
+<%= f.number_field :value, :value => session[:questionary_count] %>
+
+  
    
   </div> 
  

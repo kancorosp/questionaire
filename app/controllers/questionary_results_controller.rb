@@ -1,6 +1,6 @@
 class QuestionaryResultsController < ApplicationController
   #before_action :set_questionary_result, only: [:show, :edit, :update, :destroy]
-  
+  layout 'questionaries'
 
   # GET /questionary_results
   # GET /questionary_results.json
@@ -11,20 +11,33 @@ class QuestionaryResultsController < ApplicationController
   # GET /questionary_results/1
   # GET /questionary_results/1.json
   def show
-    @questionary = Questionary.find(params[:id])
+    @questionary = Questionary.find params[:id]
     @questionary_results = QuestionaryResult.where('questionary_id = ?',params[:id])
   end
 
   def calc
-    @questionary = Questionary.find(params[:id])
+    @questionary = Questionary.find params[:id]
+
     results = QuestionaryResult.where('questionary_id = ?',params[:id])
+    #@questionary_results = QuestionaryResult.where('questionary_id = ?',params[:id])
+    
+    
+
     @calc = {}
     results.each do |result|
       data = result.result.split ','
       data.each do |value|
         keyval = value.split ':'
         ky = keyval[0].to_s
+        #ky=r1
         vl = keyval[1].to_i
+        #vl=r1:1の1、無選択の場合は0になる
+
+        ky_fig = ky.split("",2)
+        @key = ky_fig[1].to_i
+
+        #question_itemのidがkey のcontentを出したい。
+     
         if ky != 'question_id' then
           if @calc[ky] == nil then
             @calc[ky] = []

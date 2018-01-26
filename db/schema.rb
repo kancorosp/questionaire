@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917064145) do
+ActiveRecord::Schema.define(version: 20180111025418) do
 
   create_table "questionaries", force: :cascade do |t|
     t.text "title"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20170917064145) do
     t.text "result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "comment"
   end
 
 end
