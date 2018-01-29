@@ -28,8 +28,8 @@ User.find_by(email: "mhartl@example.com")%>
 <%#end %>
 
 	<% @questionary.questionary_item.each.with_index(1) do |q_item, index| %>
- 	<%#= r + index　+ : + q_item.content %>
- 	<%= index.to_s + q_item.content %>
+ 	<%= 'r' +index.to_s+ ':' +q_item.content %>
+ 	<%#= index.to_s + q_item.content %>
 	<% end %>
 </td>
 
