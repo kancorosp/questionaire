@@ -24,7 +24,8 @@ class QuestionariesController < ApplicationController
     
     result ='question_id:' + id
     
-      str = 'r' + i.to_s
+    
+      str = 'r' + fig.to_s
       if params[str] == nil then
         result += ',' + str + ':0'
       else

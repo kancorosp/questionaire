@@ -14,9 +14,9 @@
 <tr><td><%= ky + ":" %>
 
 
-<%#@questionary.questionary_item.each do |q_item| %>
-<%#if @questionary.questionary_item.count == @key %>
-<%#= q_item.content %> 
+<% @questionary.questionary_item.each do |q_item| %>
+<%# if @questionary.questionary_item.count == @key %>
+<%= q_item.content %> 
 
 <%# 問題点は全部設問を表示しているところ。例えばky=r2にたいしては、
 @questionary_item.id=2のcontentのみを表示させたい →count @q_item.q.id の何番目かが一致。
@@ -29,7 +29,7 @@ User.find_by(email: "mhartl@example.com")%>
 
 	<%# @questionary.questionary_item.each.with_index(1) do |q_item, index| %>
  	<%#= 'r' +index.to_s+ ':' +q_item.content %>
-	<%# end %>
+	<% end %>
 </td>
 
 <td>
