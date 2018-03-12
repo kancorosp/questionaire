@@ -1,57 +1,49 @@
 <h1><%=@questionary.title %>の集計</h1>
 
-<%= debug(params) if Rails.env.development? %>
+
 
 <p>回答の一番最初のものは無選択。以後、１つ目の選択肢を選んだ数、２つ目の、、と続きます</p>
 
 <%= link_to "アンケート一覧に戻る" , '/questionaries' %><br>
 <%= link_to "他のアンケート結果もみる" , questionary_results_path %>
 
+<br>
+<br>
+
 <table>
-<tr><th>質問</th><th>集計</th></tr>
-<% @calc.each do |ky, vl| %>
-<%#if vl>=1 != nil %>
-<tr><td><%= ky + ":" %>
+  <tr><th>質問番号</th><th>質問内容</th><th>集計結果</th></tr>
+  
+  <% @questionary.questionary_item.each_with_index do |q_item, i| %>
+    <tr>
+      <td><%= i + 1  %></td>
+      <td><%= q_item.content %></td>
+      <td> 
 
-
-<% @questionary.questionary_item.each do |q_item| %>
-<%# if @questionary.questionary_item.count == @key %>
-<%= q_item.content %> 
-
-<%# 問題点は全部設問を表示しているところ。例えばky=r2にたいしては、
-@questionary_item.id=2のcontentのみを表示させたい →count @q_item.q.id の何番目かが一致。
-@q.item.idは連番で、r2[1]との関係はない。
-同じq.idの中で何番目か、という数字がr2[1]と等しい
-@questionary_item.content(@questionary.questionary_item.count=key)%>
-<%# helper使う？helperに変数定義？
-User.find_by(email: "mhartl@example.com")%>
-<%#end %>
-
-	<%# @questionary.questionary_item.each.with_index(1) do |q_item, index| %>
- 	<%#= 'r' +index.to_s+ ':' +q_item.content %>
-	<% end %>
-</td>
-
-<td>
- 
-
-
-<table><tr>
-
-<% for v in vl %>
-<td><%= v.to_i %></td>
-<% end %>
-
-
-</tr>
-</table>
-</td>
-<% end %>
-<%#end %>
-
+        <table>
+         
+        　<tr>
+        	 <% for v in @questionary_chai.to_a[i][1] %>
+        　　　<%# @questionary_choice.each do |q_choice| %>
+              <td><%= "  " + v.content %>
+              	<%#= q_choice.content %></td>
+            <% end %>
+          </tr>
+        </table>
+        <table>
+         
+        　<tr>
+            <% for v in @calc.to_a[i][1] %>
+              <td><%= v.to_i %></td>
+            <% end %>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  <% end %>
 </table>
 
 <br><br>
+
 <table><tr><th>コメント一覧</th></tr>
 <tr><td>
 <% @questionary.questionary_result.each do |q_result| %>

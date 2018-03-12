@@ -15,26 +15,18 @@ class QuestionariesController < ApplicationController
 
   def sendform
     id = params[:id]
-    #questionary.id
-
-    #@questionary_item.id.countをparamsで渡す？
-     @items = Questionary.find(params[:id]) #質問項目のオブジェクトが取得可能
-     @choices = @items.questionary_item # 質問項目が持っている、回答選択肢のすべてのオブジェクトを取得
-    for i in @choices #回答選択肢のすべてのオブジェクトの数の分だけ、ループを回す
-    
+    @items = Questionary.find(params[:id])
+    @choices = @items.questionary_item
     result ='question_id:' + id
-    
-    
-      str = 'r' + fig.to_s
+    for i in 1..@choices.count #value is not used
+      str = 'r' + i.to_s                   #iはindex @choicesの数だけインクリメントされます
       if params[str] == nil then
         result += ',' + str + ':0'
       else
         result += ',' + str + ':' + params[str]
-        #params[str]=r+count.itemsのvalue
       end
     end
-
-    
+   
 
     comment = params[:comment]
 

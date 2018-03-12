@@ -12,15 +12,25 @@ class QuestionaryResultsController < ApplicationController
   # GET /questionary_results/1.json
   def show
     @questionary = Questionary.find params[:id]
+
     @questionary_results = QuestionaryResult.where('questionary_id = ?',params[:id])
   end
 
   def calc
     @questionary = Questionary.find params[:id]
-
+    #複数のq_item
     results = QuestionaryResult.where('questionary_id = ?',params[:id])
-    #@questionary_results = QuestionaryResult.where('questionary_id = ?',params[:id])
+    @questionary_item = QuestionaryItem.where('questionary_id = ?',params[:id])
+    @q_item_id = @questionary_item.ids.to_a
     
+    @questionary_choice = QuestionaryChoice.where(questionary_item_id: @q_item_id)
+    #複数のq_item_id 
+    @questionary_chai = @questionary_choice.group_by {|i| i.questionary_item_id}
+    
+
+    #items = QuestionaryItem.where('questionary_id = ?',params[:id]).limit(1)
+    #@questionary_results = QuestionaryResult.where('questionary_id = ?',params[:id])
+    #content= @questionary_items.content
     
 
     @calc = {}
@@ -36,16 +46,21 @@ class QuestionaryResultsController < ApplicationController
         ky_fig = ky.split("",2)
         @key = ky_fig[1].to_i
 
+            #content = @questionary_items.where('@questionary.questionary_item.count = ? ' , @key)
+
         #question_itemのidがkey のcontentを出したい。
-     
+        #@questionary_items = QuestionaryItems.where('questionary_id = ?',params[:id]).limit(1)
+
         if ky != 'question_id' then
           if @calc[ky] == nil then
             @calc[ky] = []
           end
           @calc[ky][vl] = @calc[ky][vl] == nil ? 1 : @calc[ky][vl].to_i + 1
         end
+
       end
     end
+
   end
 
   # GET /questionary_results/new
